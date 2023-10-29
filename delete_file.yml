@@ -1,0 +1,19 @@
+name: Delete File
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+
+jobs:
+  delete-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Delete File
+        run: |
+          git rm --cached aa.txt
+          git commit -m "aa.txt"
+          git push
